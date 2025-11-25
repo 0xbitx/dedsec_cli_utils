@@ -1,13 +1,19 @@
 
-
 from dedsec_cli import cli
-import os, sys
 
-os.system('clear')
+#ALL BANNER STYLES
+# for i in range(0, 572):
+#     text = [f'{cli.green_bg}Lorem ipsum is a dummy or placeholdery [{i}] {cli.reset}', f'developed by {cli.green_blink}0xbit{cli.reset}']
+#     cli.banner(logo="DEDSEC", logo_color="green", text=text, style=i, align='center', top_space=3, bottom_space=0, text_align="center", text_top_space=0, text_bottom_space=2, width=100) 
 
-text = [f'{cli.green_bg}Lorem ipsum is a dummy or placeholdery{cli.reset}', f'developed by {cli.green_blink}0xbit{cli.reset}']
 
-cli.banner(logo="DEDSEC", logo_color="green", text=text, style=133, align='center', top_space=3, bottom_space=0, text_align="center", text_top_space=0, text_bottom_space=2, width=100) 
+#MY SELECTED BANNER STYLE
+#banner = [99,142,148,225,226,238,256,287,355,401,417,422,439,452,456,459,468,474,481,342,329,307,287,266,261,239,228,154,136,110,101,97,87,81,482]
+# for i in banner:
+#     text = [f'{cli.green_bg}Lorem ipsum is a dummy or placeholdery. [{i}] {cli.reset}', f'developed by {cli.green_blink}0xbit{cli.reset}']
+#     cli.banner(logo="DEDSEC", logo_color="green", text=text, style=i, align='center', top_space=3, bottom_space=0, text_align="center", text_top_space=0, text_bottom_space=2, width=100) 
+
+cli.banner(logo="DEDSEC", style=67, align="center", width=80, logo_color="green", text=[ f"{cli.bold}Style Utilities{cli.reset}", "Lorem ipsum is a dummy or placeholdery"], text_align="center", text_color="light_gray", top_space=2, bottom_space=1)
 
 cli.table_box(
     (f'{cli.green_line} MENU',
@@ -23,10 +29,7 @@ cli.table_box(
     top_margin=1,
 )
 
-try:
-    select = cli.input(f"option:", default="1", allow_empty=True, allow_none=False, left_padding=6, top_margin=0)
-except KeyboardInterrupt:
-    sys.exit(0)
+select = cli.input(f"option:", default="1", allow_empty=True, allow_none=False, left_padding=6, top_margin=0)
 
 if select == "1":
     cli.text("Hello World", left_padding=5, top_margin=1)
@@ -147,9 +150,9 @@ elif select == "3":
         "Severity: Critical",
         "Info: Lorem ipsum is a dummy or placeholder",),
 
-        style="smooth",
+        style="box",
         title_color=cli.green,
-        line_color=cli.violet,
+        line_color=cli.thin_dim_white,
         width="auto",
         left_padding=4,
         top_margin=1,
@@ -403,3 +406,86 @@ to be designed, independently of the copy that will subsequently
         top_margin=1,
         bottom_margin=1
     )
+
+    cli.table_box(
+    ("System", "OS: Linux", "Shell: zsh", "CPU: AMD"),
+    ("Network", "IP: 10.0.0.12", "Iface: wlan0", "Status: up"),
+    style="smooth",
+    width="auto",
+    left_padding=5,
+    spacing=2,
+    content_color=cli.white,
+    title_color=cli.yellow,
+    line_color=cli.white,
+    top_margin=1,
+    bottom_margin=1,
+    )
+    
+    headers = ["Name", "Age", "City"]
+    rows = [
+        ["John", "25", "New York"],
+        ["Alice", "30", "London"],
+        ["Bob", "35", "Tokyo"]
+    ]
+
+    cli.table(headers, rows, left_padding=6, top_margin=1, bottom_margin=1)
+
+    cli.table(headers, rows, style="rounded", header_color="cyan", row_color="white", border_color="purple", align="center")
+
+    cli.table(headers, rows, left_padding=4, top_margin=2, bottom_margin=1)
+
+
+    headers = ["filesystem", "type", "disk", "used", "use", "free", "mount point", "dev", "size"]
+    rows = [["/dev/nvme0n1p1", "ext4", "SSD", "477G", "90% ████▌", "24G", "/", "259:2", "501G"],
+            ["/dev/nvme0n1p2", "ext4", "SSD", "477G", "90% ████▌", "24G", "/", "259:2", "501G"],
+            ["/dev/nvme0n1p3", "ext4", "SSD", "477G", "90% ████▌", "24G", "/", "259:2", "501G"]]
+    
+    cli.table(headers, rows, style="default", header_color="purple", row_color="white", left_padding = 5)
+
+
+    headers = ["filesystem", "type", "disk", "used", "use", "free", "mount point", "dev", "size"]
+    rows = [[f"{cli.red}/dev/nvme0n1p1", "ext4", "SSD", "477G", f"90% {cli.green}████▌", "24G", "/", "259:2", "501G"],
+            [f"{cli.green}/dev/nvme0n1p2", "ext4", "SSD", "477G", f"90% {cli.green}████▌", "24G", "/", "259:2", "501G"],
+            [f"{cli.yellow}/dev/nvme0n1p3", "ext4", "SSD", "477G", f"90% {cli.green}████▌", "24G", "/", "259:2", "501G"]]
+
+    cli.table(headers, rows, style="classic", header_color="purple", row_color="white", left_padding = 5, top_margin=1, bottom_margin = 1)
+
+
+    headers = ["INFO"]
+    rows = [["Lorem ipsum is a dummy or placeholder text commonly used in graphic  design", 
+            f"publishing, and {cli.white_italic}web development{cli.reset}. {cli.purple}Its purpose is to permit a page layout{cli.reset}", 
+            "to be designed, independently of the copy that will subsequently"]]
+    cli.table(headers, rows, style="info", header_color="purple", left_padding = 5, top_margin=1, bottom_margin = 1, row_color="purple", align="center", text_align="center")
+
+
+    headers = ["INFO"]
+    rows = [["Lorem ipsum is a dummy or placeholder text commonly used in graphic  design", 
+            f"publishing, and {cli.purple_bg}web development{cli.reset}. Its purpose is to permit a page layout", 
+            "to be designed, independently of the copy that will subsequently"]]
+    cli.table(headers, rows, style="info", header_color="white", left_padding = 5, top_margin=1, bottom_margin = 1, row_color="white", align="center", text_align="center")
+
+    headers = ["INFO"]
+    rows = [[f"{cli.blink}Lorem ipsum is a dummy or placeholder text commonly used in graphic  design", 
+            f"{cli.blink}publishing, and web development. Its purpose is to permit a page layout", 
+            f"{cli.blink}to be designed, independently of the copy that will subsequently"]]
+    cli.table(headers, rows, style="info", header_color="white", left_padding = 5, top_margin=1, bottom_margin = 1, row_color="purple", align="left", text_align="left")
+
+    headers = ["Component", "Status", "Usage", "Health"]
+    rows = [
+        ["CPU", "Online", "45%", "Good"],
+        ["Memory", "Online", "78%", "Warning"],
+        ["Disk", "Online", "92%", "Critical"],
+        ["Network", "Online", "12%", "Good"]
+    ]
+    cli.table(headers, rows, left_padding=7, style="classic", header_color="green", align="center")
+
+
+
+    headers = ["Username", "Email", "Role", "Last Login"]
+    rows = [
+        ["john_doe", "john@example.com", "Admin", "2024-01-15"],
+        ["jane_smith", "jane@company.com", "User", "2024-01-14"],
+        ["bob_wilson", "bob@test.org", "Moderator", "2024-01-13"]
+    ]
+
+    cli.table(headers, rows, style="classic", top_margin=5, bottom_margin=5, border_color="purple", left_padding=5, header_color="purple", row_color="dim_white", align="center")
