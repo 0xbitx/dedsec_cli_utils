@@ -2,10 +2,6 @@
 <h1 align="center"> DEDSEC CLI </h1>
 <h4 align="center">A powerful Python library for creating beautiful and customizable command-line interfaces with rich text formatting, banners, tables, and interactive elements.</h4>
 
-`
-pip install dedsec-cli
-`
-
 ### Quick Start
 
 ```python
@@ -20,7 +16,7 @@ cli.banner(logo="DEDSEC_CLI", logo_color="green", text=text, style=142, align='c
 
 ### INSTALLATION
 ```
-pip install dedsec-cli==1.0
+pip install dedsec-cli==1.1
 git clone https://github.com/0xbitx/dedsec_cli_utils.git
 cd dedsec_cli_utils
 python3 sample.py
